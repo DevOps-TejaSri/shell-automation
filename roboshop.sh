@@ -54,6 +54,6 @@ do
       }]
    }
    '
-   ECHO "RECORD UPDATE FOR $instance"
+   echo "RECORD UPDATE FOR $instance"
 
 done
