@@ -8,6 +8,7 @@ G="\e[32m"
 Y="\e[33m"
 B="\e[34m"
 N="\e[0m"
+SCRIPT_DIR=$PWD
 
 
 if [ $USERID -ne 0 ]; then
@@ -60,10 +61,10 @@ fi
  npm install
  VALIDATE $? "Installing dependencies"
 
- cp catalogue.service /etc/systemd/system/atalogue.service
+ cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/atalogue.service
  VALIDATE $? "Created systemctl service"
 
  systemctl daemon-reload
- systemctl enable catalogue 
+ systemctl enable catalogue  &>>$LOGS_FILE
  systemctl start catalogue
  VALIDATE $? " Starting and enabling catalogue"
