@@ -27,22 +27,20 @@ VALIDATE(){
 }
  
 
- dnf module disable nodejs -y
+ dnf module disable nodejs -y &>>LOGS_FILE
  VALIDATE $? "Disabling NodeJS Default version"
 
- dnf module enable nodejs:20 -y
+ dnf module enable nodejs:20 -y &>>LOGS_FILE
  VALIDATE $? "Enabling Nodejs 20"
 
- dnf install nodejs -y
+ dnf install nodejs -y &>>LOGS_FILE
  VALIDATE $? "Install NodeJS"
 
- useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+ useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>LOGS_FILE
  VALIDATE $? "Creating system user"
 
  mkdir /app
  VALIDATE $? "Creating app directory"
 
- curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-cd /app 
-unzip /tmp/catalogue.zip
-VALIDATE $? "Downloading catalogue code"  
+ curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip  &>>LOGS_FILE
+ VALIDATE $? "Downloading catalogue code"  
