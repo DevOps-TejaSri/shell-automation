@@ -45,4 +45,4 @@ VALIDATE(){
  curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
 cd /app 
 unzip /tmp/catalogue.zip
-VALIDATE $? "Downloading catalogue code"
+VALIDATE $? "Downloading catalogue code"  
